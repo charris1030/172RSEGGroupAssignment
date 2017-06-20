@@ -72,7 +72,7 @@
   padding-left: 4px;
 }
 #LogoWrapper:hover {
-  height: 150px;
+  height: 200px;
   width: 80px;
 }
 #LogoWrapper:hover ul#LogoNames {
@@ -144,17 +144,31 @@ body {
   color: white;
 }
 
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 .wrapper {
   position: fixed;
   z-index: 100;
   top: 50%;
   left: 50%;
   margin: -250px 0 0 -250px;
-  width: 500px;
-  height: 800px;
+  width: 520px;
+  height: 600px;
   color: white;
   font-family: "Open Sans", sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   font-weight: 100;
   text-align: left;
 }
@@ -195,6 +209,11 @@ body {
   border-color: #76e6c9;
   cursor: pointer;
 }
+.wrapper canvas {
+  margin-left: 135px;
+  border: 2px solid white;
+  border-radius: 25px;
+}
 .wrapper table {
   color: white;
   width: 100%;
@@ -211,4 +230,28 @@ body {
 }
 .wrapper table td:hover {
   color: #bfbfbf;
+}
+
+ul.FileList {
+  list-style-type: none;
+  text-align: right;
+  white-space: nowrap;
+  direction: rtl;
+  padding: 10px;
+  margin: 10px;
+}
+ul.FileList li {
+  line-height: 2em;
+}
+ul.FileList li a {
+  padding-top: 10px;
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  transition: all linear .2s;
+}
+ul.FileList li a:hover {
+  background-color: #cccccc;
+  border-radius: 10px;
 }

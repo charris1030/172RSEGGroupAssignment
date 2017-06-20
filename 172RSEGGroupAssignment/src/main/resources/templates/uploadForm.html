@@ -1,23 +1,73 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link href="../static/css/style.scss" th:href="@{/css/style.css}" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico" rel="stylesheet" media="screen"/>
-<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+<link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+
 </head>
 <body ng-app="app" ng-controller="Ctrl">
-
+<!-- 
 <div class="container-fluid">
-
 <div id="LogoWrapper"> 
   
-   <ul id="LogoNames">
-    <li ng-click="ChangeScreen('Splash')">Home</li>
-    <li ng-click="ChangeScreen('Create')">Upload</li>
-	<li ng-click="ChangeScreen('List')">List</li>
-    <li ng-click="ChangeScreen('About')">About</li>
-  </ul>
+</div>
+<br /><br /><br /><br /><br /><br />
+	<div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>
+	<div class="inputwrapper">
+		<form method="POST" enctype="multipart/form-data" action="/">
+			<table>
+				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td></td>
+				<td><input type="submit" value="Lets Upload" />
+				 </td></tr>
+			</table>
+		</form>
+	</div>
+	<div style="background-color: #fff;">
+		<ul>
+			<li th:each="file : ${files}">
+				<a th:href="${file}" th:text="${file}" />
+			</li>
+		</ul>
+	</div> -->
+<!-- 
+<div class="container-fluid">
+<div id="LogoWrapper"> 
   
 </div>
+<br /><br /><br /><br /><br /><br />
+	<div th:if="${message}">
+		<h2 th:text="${message}"/>
+	</div>
+	<div class="inputwrapper">
+		<form method="POST" enctype="multipart/form-data" action="/">
+			<table>
+				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+				<tr><td></td>
+				<td><input type="submit" value="Lets Upload" />
+				 </td></tr>
+			</table>
+		</form>
+	</div>
+	<div style="background-color: #fff;">
+		<ul>
+			<li th:each="file : ${files}">
+				<a th:href="${file}" th:text="${file}" />
+			</li>
+		</ul>
+	</div> -->
+	
+<div id="LogoWrapper">
+
+  <ul id="LogoNames">
+    <li ng-click="ChangeScreen('Splash')">Home</li>
+    <li ng-click="ChangeScreen('Create')">Upload</li>
+		<li ng-click="ChangeScreen('List')">List</li>
+    <li ng-click="ChangeScreen('About')">About</li>
+  </ul>
+</div>
+
 
 <div class="wrapper" ng-if="CurrScreen=='Splash'">
   <h2>Image Sharing Over Cloud</h2>
@@ -60,9 +110,7 @@
 
 <div ng-controller="CreateCtrl" class="wrapper" ng-if="CurrScreen=='Create'" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
   <h2>Lets Add Things</h2>
-  <p>
-    This is a form that will allow you to add things.
-  </p>
+ <p ng-if="Model==null">{{Messages}}</p>
   <div class="inputwrapper">
     <input type="text" ng-model="Model.FirstName" placeholder="First Name" />
     <input type="text" ng-model="Model.LastName" placeholder="Last Name" />
@@ -75,58 +123,31 @@
     <select ng-model="Item" ng-options="P.Value as P.Display for P in States"></select>
 
     <div ng-repeat="n in uploader.queue" ng-if="uploader.queue.length>0">{{n._file.name}}
-      <div ng-thumb="{file:n._file, height:200}">
-        <canvas width="500" height="200"></canvas>
+      <div ng-thumb="{file:n._file, height:150}">
+        <canvas width="500" height="150"></canvas>
       </div>
 
     </div>
     <div ng-if="File==null" class='Dropbox' nv-file-over="" uploader="uploader" over-class="Accent">Drop File Here</div>
   </div>
 
-  <!-- <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a> -->
-  
-  <br /> 
-  <div th:if="${message}">
-		<h4 style="color:#fff;" th:text="${message}"/>
-	</div>
-
-	<div class="inputwrapper">
-		<form method="POST" enctype="multipart/form-data" action="/">
-			<table>
-				<tr><td style="font-size: 16px;">File to upload:</td><td><input type="file" name="file" /></td></tr>
-				<tr><td></td>
-				<td><input type="submit" value="Lets Upload" />
-	
-				 </td></tr>
-			</table>
-		</form>
-	</div>
-  
+  <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a>
 </div>
 
-<br /><br /><br /><br /><br /><br />
-	
-	<!-- <div style="background-color: #fff;">
-		<ul>
+<div ng-if="CurrScreen=='List'" class="wrapper">
+		<h2>Current Files</h2>
+    <p>
+		<ul class="FileList">
 			<li th:each="file : ${files}">
 				<a th:href="${file}" th:text="${file}" />
 			</li>
 		</ul>
-	</div>-->
-	
-	<div ng-if="CurrScreen=='List'" class="wrapper">
-	<h4>Uploaded Files</h4>
-		<ul style="background-color: #fff;">
-			<li th:each="file : ${files}">
-				<a th:href="${file}" th:text="${file}" />
-			</li>
-		</ul>
+    </p>
 	</div> 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
 <script th:src="@{/js/app.js}"></script>
 
-</div>
+
 </body>
 </html>
