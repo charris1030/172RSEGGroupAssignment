@@ -1,0 +1,221 @@
+$primarycolor: #555;
+$ScriptFont: 'Pacifico', cursive;
+$StandardFont: 'Open Sans', sans-serif;
+
+@-webkit-keyframes BackgroundAdjust {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes BackgroundAdjust {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes BackgroundAdjust {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+#LogoWrapper {
+  border-radius: 1px;
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  border-bottom-left-radius:10px;
+  display: flex;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  left: 10px;
+  overflow: hidden;
+  transition: all linear .5s;
+  top:10px;
+  
+  ul#LogoNames {
+    transition: left linear .5s;
+    top:0px;
+  left:0px;
+    padding:0px;
+    margin-top:50px;
+    width: 40px;
+  height: 50px;
+ 
+    display:table;
+    position:relative;
+     
+    z-index:-1;
+    padding-left: 10px;
+    list-style: none;
+    li {
+      font-family: $StandardFont;
+      padding-bottom: 5px;
+      font-weight: 300;
+      font-size:19px;
+      cursor:pointer;
+      
+      &:hover{
+        color: #35daaf;
+        padding-left: 4px;
+      }
+    }
+}
+  
+  &:hover {
+    ul#LogoNames{
+      z-index:100;
+      
+           
+    }
+    height: 150px;
+    width:80px;
+    
+  }
+}
+ul#LogoNames {
+    transition: left linear .5s;
+    top:0px;
+  left:0px;
+    padding:0px;
+    margin:0px;
+    width: 40px;
+  height: 50px;
+ 
+    display: table;
+    position:absolute;
+     background-color:white;
+    z-index:-1;
+    padding-left: 10px;
+    list-style: none;
+    li {
+      font-family: 'Slabo 27px', serif;
+      font-weight: 300;
+      font-size:12px;
+    }
+}
+body {
+  -webkit-animation: BackgroundAdjust 20s ease infinite;
+  -moz-animation: BackgroundAdjust 20s ease infinite;
+  animation: BackgroundAdjust 20s ease infinite;
+
+  background: linear-gradient(270deg, #35daaf, #359ada);
+  background-size: 400% 400%;
+  padding: 0px;
+  margin: 10px auto;
+  
+  font-weight: 300;
+  margin-top: 30px;
+}
+.inputwrapper {
+  display:flexbox;
+  span {
+    font-size: 28px;
+    color: white;
+  }
+  input, select {
+    margin: 0px;
+    margin-top: 15px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-bottom: white 2px solid;
+    font-size: 20px;
+
+    color: white;
+    
+    line-height: 1em;
+  }
+
+  option{
+    background-color:#35daaf;
+    padding: 5px 0;
+    font-size: 12px;
+    outline:none;
+    border: 0;
+    line-height: 1em;
+  }
+  a {
+    font-size: large;
+    text-decoration: none;
+    color: white;
+  }
+}
+.wrapper {
+  position:fixed;
+  z-index: 100;  
+  top:50%;  
+  left:50%;  
+  margin:-250px 0 0 -250px;  
+  width:500px;  
+  height:500px;
+  color:white;
+  
+  font-family: $StandardFont;
+  overflow:hidden;
+  font-weight:100;
+  text-align:left;
+  h2{
+    font-size:38px;
+    text-align:center;
+    padding:0px;
+    font-family:$ScriptFont;
+  }
+  p{
+     text-align:left;
+    font-size: 18px;
+    line-spacing: 2em;
+  }
+  
+  .button {
+    position:relative;
+    left: 50%;
+    margin:-50px 0 0 -50px;  
+    padding: 5px;
+    border: 2px solid white;
+    font-size: 20px;
+    border-radius: 2px;
+    
+    &:hover{
+      color:lighten(#35daaf,15%);
+      border-color: lighten(#35daaf,15%);
+      cursor:pointer;
+    }
+  }
+  
+  table {
+    color: white;
+    width: 100%;
+    border-radius: 50px;
+    min-width: 400px;
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Slabo 27px', serif;
+    padding: 0px;
+    td {
+      padding-top: 20px;
+      cursor: default;
+      &:hover {
+        color: darken(white, 25%);
+      }
+    }
+  }
+}
+

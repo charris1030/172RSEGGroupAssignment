@@ -1,0 +1,214 @@
+@-webkit-keyframes BackgroundAdjust {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes BackgroundAdjust {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes BackgroundAdjust {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+#LogoWrapper {
+  border-radius: 1px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: flex;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  left: 10px;
+  overflow: hidden;
+  transition: all linear .2s;
+  top: 10px;
+}
+#LogoWrapper ul#LogoNames {
+  transition: left linear .5s;
+  top: 0px;
+  left: 0px;
+  padding: 0px;
+  margin-top: 50px;
+  width: 40px;
+  height: 50px;
+  display: table;
+  position: relative;
+  z-index: -1;
+  padding-left: 10px;
+  list-style: none;
+}
+#LogoWrapper ul#LogoNames li {
+  font-family: "Open Sans", sans-serif;
+  padding-bottom: 5px;
+  font-weight: 300;
+  font-size: 19px;
+  cursor: pointer;
+}
+#LogoWrapper ul#LogoNames li:hover {
+  color: #35daaf;
+  padding-left: 4px;
+}
+#LogoWrapper:hover {
+  height: 150px;
+  width: 80px;
+}
+#LogoWrapper:hover ul#LogoNames {
+  z-index: 100;
+}
+
+ul#LogoNames {
+  transition: left linear .5s;
+  top: 0px;
+  left: 0px;
+  padding: 0px;
+  margin: 0px;
+  width: 40px;
+  height: 50px;
+  display: table;
+  position: absolute;
+  background-color: white;
+  z-index: -1;
+  padding-left: 10px;
+  list-style: none;
+}
+ul#LogoNames li {
+  font-family: 'Slabo 27px', serif;
+  font-weight: 300;
+  font-size: 12px;
+}
+
+body {
+  -webkit-animation: BackgroundAdjust 20s ease infinite;
+  -moz-animation: BackgroundAdjust 20s ease infinite;
+  animation: BackgroundAdjust 20s ease infinite;
+  background: linear-gradient(270deg, #35daaf, #359ada);
+  background-size: 400% 400%;
+  padding: 0px;
+  margin: 0px;
+  font-weight: 300;
+  margin-top: 30px;
+}
+
+.inputwrapper {
+  display: flexbox;
+}
+.inputwrapper span {
+  font-size: 28px;
+  color: white;
+}
+.inputwrapper input, .inputwrapper select {
+  margin: 0px;
+  margin-top: 15px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: white 2px solid;
+  font-size: 20px;
+  color: white;
+  line-height: 1em;
+}
+.inputwrapper option {
+  background-color: #35daaf;
+  padding: 5px 0;
+  font-size: 12px;
+  outline: none;
+  border: 0;
+  line-height: 1em;
+}
+.inputwrapper a {
+  font-size: large;
+  text-decoration: none;
+  color: white;
+}
+
+.wrapper {
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  margin: -250px 0 0 -250px;
+  width: 500px;
+  height: 800px;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  overflow: hidden;
+  font-weight: 100;
+  text-align: left;
+}
+.wrapper h2 {
+  font-size: 38px;
+  text-align: center;
+  padding: 0px;
+  font-family: "Pacifico", cursive;
+}
+.wrapper p {
+  text-align: left;
+  font-size: 18px;
+  line-spacing: 2em;
+}
+.wrapper .Dropbox {
+  width: 98%;
+  border: 2px white solid;
+  height: 200px;
+  text-align: center;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+.wrapper .Dropbox.Accent {
+  border-color: #333;
+}
+.wrapper .button {
+  position: relative;
+  left: 50%;
+  top: 10px;
+  margin: -50px 0 0 -50px;
+  padding: 5px;
+  border: 2px solid white;
+  font-size: 20px;
+  border-radius: 2px;
+}
+.wrapper .button:hover {
+  color: #76e6c9;
+  border-color: #76e6c9;
+  cursor: pointer;
+}
+.wrapper table {
+  color: white;
+  width: 100%;
+  border-radius: 50px;
+  min-width: 400px;
+  text-align: center;
+  font-size: 50px;
+  font-family: 'Slabo 27px', serif;
+  padding: 0px;
+}
+.wrapper table td {
+  padding-top: 20px;
+  cursor: default;
+}
+.wrapper table td:hover {
+  color: #bfbfbf;
+}
