@@ -1,7 +1,7 @@
-C:\dev\file-upload-application\src\main\java\com\Application.java
-C:\dev\file-upload-application\src\main\java\com\storage\FileSystemStorageService.java
-C:\dev\file-upload-application\src\main\java\com\FileUploadController.java
-C:\dev\file-upload-application\src\main\java\com\storage\StorageService.java
-C:\dev\file-upload-application\src\main\java\com\storage\StorageException.java
-C:\dev\file-upload-application\src\main\java\com\storage\StorageProperties.java
-C:\dev\file-upload-application\src\main\java\com\storage\StorageFileNotFoundException.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\StorageException.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\FileUploadController.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\StorageFileNotFoundException.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\StorageService.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\Application.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\StorageProperties.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\FileSystemStorageService.java
