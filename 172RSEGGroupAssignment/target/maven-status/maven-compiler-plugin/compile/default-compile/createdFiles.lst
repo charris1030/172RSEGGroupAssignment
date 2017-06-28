@@ -1,7 +1,9 @@
 com\FileUploadController.class
 com\Application.class
 com\storage\StorageException.class
+com\MvcConfig.class
 com\storage\StorageFileNotFoundException.class
 com\storage\StorageProperties.class
 com\storage\FileSystemStorageService.class
 com\storage\StorageService.class
+com\WebSecurityConfig.class
