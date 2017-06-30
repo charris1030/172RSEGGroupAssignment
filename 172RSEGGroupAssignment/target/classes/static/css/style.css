@@ -71,11 +71,11 @@
   color: #35daaf;
   padding-left: 4px;
 }
-#LogoWrapper:hover {
+#LogoWrapper.Expanded {
   height: 200px;
   width: 80px;
 }
-#LogoWrapper:hover ul#LogoNames {
+#LogoWrapper.Expanded ul#LogoNames {
   z-index: 100;
 }
 
@@ -254,4 +254,64 @@ ul.FileList li a {
 ul.FileList li a:hover {
   background-color: #cccccc;
   border-radius: 10px;
+}
+
+.LoginWrapper {
+  font-family: "Open Sans", sans-serif;
+  padding-bottom: 0px;
+  position: absolute;
+  width: 100px;
+  background-color: white;
+  right: 0px;
+  top: 0px;
+  border-bottom-left-radius: 10px;
+  min-height: 20px;
+  height: 20px;
+  overflow: hidden;
+  transition: all linear .3s;
+}
+.LoginWrapper .LoginUser {
+  padding-left: 30px;
+  color: #333;
+}
+.LoginWrapper .Logout {
+  width: 100%;
+  margin: 0;
+  background-color: #359ada;
+  text-align: center;
+  argin: 0;
+  padding: 1px;
+  margin-top: 9px;
+  text-align: center;
+  font-size: small;
+}
+.LoginWrapper .Logout a {
+  text-decoration: none;
+  color: white;
+}
+.LoginWrapper:hover {
+  height: 50px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.FileList {
+  display: Flex;
+}
+.FileList .FileCard {
+  display: flexbox;
+  width: 200px;
+  text-align: center;
+  margin: 2px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+.FileList .FileCard a {
+  color: #555;
+}
+.FileList .FileCard img {
+  display: flex;
+  width: 100%;
+  height: auto;
 }

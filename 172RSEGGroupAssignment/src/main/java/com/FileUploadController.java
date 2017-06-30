@@ -1,6 +1,7 @@
 package com;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.storage.StorageFileNotFoundException;
 import com.storage.StorageService;
 
+
 @Controller
 public class FileUploadController {
 
@@ -33,6 +35,19 @@ public class FileUploadController {
         this.storageService = storageService;
     }
 
+    @RequestMapping(value="/ListFiles", method = RequestMethod.GET)
+    public @ResponseBody List<String> getListOfFIles() throws IOException{
+    	 
+    	   return storageService
+                   .loadAll()
+                   .map(path ->
+                           MvcUriComponentsBuilder
+                                   .fromMethodName(FileUploadController.class, "serveFile", path.getFileName().toString())
+                                   .build().toString()).collect(Collectors.toList());
+
+    	
+    }
+    
     @GetMapping("/")
     public String listUploadedFiles(Model model) throws IOException {
 

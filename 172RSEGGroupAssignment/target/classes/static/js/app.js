@@ -1,5 +1,38 @@
 var app = angular.module("app", ["angularFileUpload"]);
 
+app.controller("ListCtrl", function($scope,$http) {
+  
+	
+	function getName(s) {
+    return s.replace(/^.*[\\\/]/, '');
+}
+  
+  $scope.Init = function()
+  {
+    $scope.GetListOfFiles();
+  }
+    
+   $scope.GetListOfFiles = function(){
+	   $http({
+		   url: '/',
+		   method: 'GET'
+	   }).then(function(data)
+		{
+		   let htl =data.data;     
+		   $scope.ListofFiles = [];
+		   $('#Dump').html(htl);
+		   $('#Dump .FileLink').each(function(){
+			   var f =  getName($(this).text());
+			   var fullpath = $(this).text();
+			   $scope.ListofFiles.push({FileName:f, Fullpath: fullpath});
+			   
+		   })
+		   $('#Dump').empty();
+		   console.log($scope.ListofFiles);
+		});     
+    };
+});
+
 app.controller("CreateCtrl", function(
   $scope,
   $timeout,
@@ -10,69 +43,69 @@ app.controller("CreateCtrl", function(
   $scope.File = null;
   $scope.Model = null;
   $scope.States = [
-    { Display: " Alabama", Value: "AL" },
-    { Display: " Alaska", Value: "AK" },
-    { Display: " Arizona", Value: "AZ" },
-    { Display: " Arkansas", Value: "AR" },
-    { Display: " California", Value: "CA" },
-    { Display: " Colorado", Value: "CO" },
-    { Display: " Connecticut", Value: "CT" },
-    { Display: " Delaware", Value: "DE" },
-    { Display: " Florida", Value: "FL" },
-    { Display: " Georgia", Value: "GA" },
-    { Display: " Hawaii", Value: "HI" },
-    { Display: " Idaho", Value: "ID" },
-    { Display: " Illinois", Value: "IL" },
-    { Display: " Indiana", Value: "IN" },
-    { Display: " Iowa", Value: "IA" },
-    { Display: " Kansas", Value: "KS" },
-    { Display: " Kentucky[D]", Value: "KY" },
-    { Display: " Louisiana", Value: "LA" },
-    { Display: " Maine", Value: "ME" },
-    { Display: " Maryland", Value: "MD" },
-    { Display: " Massachusetts[E]", Value: "MA" },
-    { Display: " Michigan", Value: "MI" },
-    { Display: " Minnesota", Value: "MN" },
-    { Display: " Mississippi", Value: "MS" },
-    { Display: " Missouri", Value: "MO" },
-    { Display: " Montana", Value: "MT" },
-    { Display: " Nebraska", Value: "NE" },
-    { Display: " Nevada", Value: "NV" },
-    { Display: " New Hampshire", Value: "NH" },
-    { Display: " New Jersey", Value: "NJ" },
-    { Display: " New Mexico", Value: "NM" },
-    { Display: " New York", Value: "NY" },
-    { Display: " North Carolina", Value: "NC" },
-    { Display: "  North Dakota", Value: "ND" },
-    { Display: " Ohio", Value: "OH" },
-    { Display: " Oklahoma", Value: "OK" },
-    { Display: " Oregon", Value: "OR" },
-    { Display: " Pennsylvania[F]", Value: "PA" },
-    { Display: " Rhode Island[G]", Value: "RI" },
-    { Display: " South Carolina", Value: "SC" },
-    { Display: " South Dakota", Value: "SD" },
-    { Display: " Tennessee", Value: "TN" },
-    { Display: " Texas", Value: "TX" },
-    { Display: " Utah", Value: "UT" },
-    { Display: " Vermont", Value: "VT" },
-    { Display: " Virginia", Value: "VA" },
-    { Display: " Washington", Value: "WA" },
-    { Display: " West Virginia", Value: "WV" },
-    { Display: " Wisconsin", Value: "WI" },
-    { Display: " Wyoming", Value: "WY" }
+    { Display: " Alabama", Value: "AL" },
+    { Display: " Alaska", Value: "AK" },
+    { Display: " Arizona", Value: "AZ" },
+    { Display: " Arkansas", Value: "AR" },
+    { Display: " California", Value: "CA" },
+    { Display: " Colorado", Value: "CO" },
+    { Display: " Connecticut", Value: "CT" },
+    { Display: " Delaware", Value: "DE" },
+    { Display: " Florida", Value: "FL" },
+    { Display: " Georgia", Value: "GA" },
+    { Display: " Hawaii", Value: "HI" },
+    { Display: " Idaho", Value: "ID" },
+    { Display: " Illinois", Value: "IL" },
+    { Display: " Indiana", Value: "IN" },
+    { Display: " Iowa", Value: "IA" },
+    { Display: " Kansas", Value: "KS" },
+    { Display: " Kentucky[D]", Value: "KY" },
+    { Display: " Louisiana", Value: "LA" },
+    { Display: " Maine", Value: "ME" },
+    { Display: " Maryland", Value: "MD" },
+    { Display: " Massachusetts[E]", Value: "MA" },
+    { Display: " Michigan", Value: "MI" },
+    { Display: " Minnesota", Value: "MN" },
+    { Display: " Mississippi", Value: "MS" },
+    { Display: " Missouri", Value: "MO" },
+    { Display: " Montana", Value: "MT" },
+    { Display: " Nebraska", Value: "NE" },
+    { Display: " Nevada", Value: "NV" },
+    { Display: " New Hampshire", Value: "NH" },
+    { Display: " New Jersey", Value: "NJ" },
+    { Display: " New Mexico", Value: "NM" },
+    { Display: " New York", Value: "NY" },
+    { Display: " North Carolina", Value: "NC" },
+    { Display: "  North Dakota", Value: "ND" },
+    { Display: " Ohio", Value: "OH" },
+    { Display: " Oklahoma", Value: "OK" },
+    { Display: " Oregon", Value: "OR" },
+    { Display: " Pennsylvania[F]", Value: "PA" },
+    { Display: " Rhode Island[G]", Value: "RI" },
+    { Display: " South Carolina", Value: "SC" },
+    { Display: " South Dakota", Value: "SD" },
+    { Display: " Tennessee", Value: "TN" },
+    { Display: " Texas", Value: "TX" },
+    { Display: " Utah", Value: "UT" },
+    { Display: " Vermont", Value: "VT" },
+    { Display: " Virginia", Value: "VA" },
+    { Display: " Washington", Value: "WA" },
+    { Display: " West Virginia", Value: "WV" },
+    { Display: " Wisconsin", Value: "WI" },
+    { Display: " Wyoming", Value: "WY" }
   ];
 
-   $scope.Upload = function(F)
+    $scope.Upload = function(F)
   {
     console.log(F);
     uploader.queue[0].upload();
     
   }
   var uploader = $scope.uploader =  new FileUploader({
-   url:"/",
+   url:"",
    method:"POST"
   });
-
+  
   uploader.filters.push({
     name: "customFilter",
     fn: function(item /*{File|FileLikeObject}*/, options) {
@@ -90,20 +123,25 @@ app.controller("CreateCtrl", function(
   uploader.onAfterAddingFile = function(fileItem) {
     console.info("onAfterAddingFile", fileItem);
     $scope.File = fileItem._file;
+    console.log(uploader.queue);
+   
   };
   uploader.onSuccessItem = function(fileItem, response, status, headers) {
     console.log("Success");
-      var filename = $scope.File.name;
+     var filename = $scope.File.name;
      $scope.Messages =filename +" uploaded correctly!";
     $scope.Model = null;
     $scope.File = null;   
-    uploader.clearQueue();
+
   };
 });
 
-app.controller("Ctrl", function($scope, $timeout, $interval) {
-  $scope.CurrScreen = "About";
 
+app.controller("Ctrl", function($scope, $timeout, $interval, $http) {
+  $scope.CurrScreen = "About";
+  
+  $scope.MenuExpanded = false;
+  
   $scope.ChangeScreen = function(Screen) {
     switch (Screen) {
       case "Splash":
@@ -122,6 +160,9 @@ app.controller("Ctrl", function($scope, $timeout, $interval) {
         $scope.CurrScreen = "List";
         return;
     }
+    
+   
+    
   };
 });
 

@@ -15,8 +15,7 @@
 <body ng-app="app" ng-controller="Ctrl">
 <!-- 
 <div class="container-fluid">
-<div id="LogoWrapper"> 
-  
+<div id="LogoWrapper">   
 </div>
 <br /><br /><br /><br /><br /><br />
 	<div th:if="${message}">
@@ -64,23 +63,29 @@
 				<a th:href="${file}" th:text="${file}" />
 			</li>
 		</ul>
-	</div> -->
-<div style="margin-left:110px;">
+	</div> 
+	<div style="margin-left:110px;">
 <h5 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h5>
 <form th:action="@{/logout}" method="post">
   <input type="submit" value="Sign Out"/>
 </form>
 <br /><br />
 </div>
-<div id="LogoWrapper">
+	-->
+<div id="LogoWrapper" ng-class="{'Expanded':Expanded};" ng-click="Expanded=!Expanded">
+
   <ul id="LogoNames">
     <li ng-click="ChangeScreen('Splash')">Home</li>
     <li ng-click="ChangeScreen('Create')">Upload</li>
-		<li ng-click="ChangeScreen('List')">List</li>
+<li ng-click="ChangeScreen('List')">List</li>
     <li ng-click="ChangeScreen('About')">About</li>
   </ul>
 </div>
 
+<div class="LoginWrapper">
+  <div class="LoginUser">text</div>
+  <div class="Logout"><a href="#" > Logout</a></div>
+</div>
 <div class="wrapper" ng-if="CurrScreen=='Splash'">
   <h2>Image Sharing Over Cloud</h2>
  
@@ -122,7 +127,8 @@
 
 <div ng-controller="CreateCtrl" class="wrapper" ng-if="CurrScreen=='Create'" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
   <h2>Lets Add Things</h2>
- <p ng-if="Model==null">{{Messages}}</p>
+  <p ng-if="Model==null">{{Messages}}</p>
+  
   <div class="inputwrapper">
     <input type="text" ng-model="Model.FirstName" placeholder="First Name" />
     <input type="text" ng-model="Model.LastName" placeholder="Last Name" />
@@ -136,7 +142,8 @@
 
     <div ng-repeat="n in uploader.queue" ng-if="uploader.queue.length>0">{{n._file.name}}
       <div ng-thumb="{file:n._file, height:150}">
-        <canvas width="500" height="150"></canvas>
+        
+        <canvas width="400" height="150"></canvas>
       </div>
 
     </div>
@@ -144,20 +151,33 @@
   </div>
 
   <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a>
+  
+  
 </div>
 
-<div ng-if="CurrScreen=='List'" class="wrapper"> <!--onload="resetTimeout();"-->
-		<h2>Current Files</h2>
+<div ng-if="CurrScreen=='List'" ng-init="GetListOfFiles()" ng-controller="ListCtrl" class="wrapper">
+    <h2>Current Files</h2>
     <p>
 		<ul class="FileList">
-			<li th:each="file : ${files}">
-				<a th:href="${file}" th:text="${file}" />
+			<li ng-repeat="f in ListofFiles" class="FileCard">
+        <img src="{{f.Fullpath}}" alt="{{f.FileName}}"></img>
+				<a href="{{f.Fullpath}}"> {{f.FileName}}</a>
 			</li>
+      
 		</ul>
     </p>
-	</div>
+</div> 
 
+		<ul style="display:none" class="FileList">
+			<li th:each="file : ${files}">		
+		
+				<a class="FileLink" th:href="${file}" th:text="${file}" />
+			</li>
+		</ul>
+    
+	<div id="Dump" style="display: none;"></div>
 
+<script  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
 <script th:src="@{/js/app.js}"></script>
