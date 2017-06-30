@@ -127,7 +127,7 @@
 
 <div ng-controller="CreateCtrl" class="wrapper" ng-if="CurrScreen=='Create'" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
   <h2>Lets Add Things</h2>
-  <p ng-if="Model==null">{{Messages}}</p>
+  <p ng-if="Messages!=''">{{Messages}}</p>
   
   <div class="inputwrapper">
     <input type="text" ng-model="Model.FirstName" placeholder="First Name" />
@@ -143,7 +143,7 @@
     <div ng-repeat="n in uploader.queue" ng-if="uploader.queue.length>0">{{n._file.name}}
       <div ng-thumb="{file:n._file, height:150}">
         
-        <canvas width="400" height="150"></canvas>
+        <canvas width="500" height="150"></canvas>
       </div>
 
     </div>
@@ -155,7 +155,7 @@
   
 </div>
 
-<div ng-if="CurrScreen=='List'" ng-init="GetListOfFiles()" ng-controller="ListCtrl" class="wrapper">
+<div ng-if="CurrScreen=='List'" ng-init="Init()" ng-controller="ListCtrl" class="wrapper">
     <h2>Current Files</h2>
     <p>
 		<ul class="FileList">
@@ -167,7 +167,6 @@
 		</ul>
     </p>
 </div> 
-
 		<ul style="display:none" class="FileList">
 			<li th:each="file : ${files}">		
 		

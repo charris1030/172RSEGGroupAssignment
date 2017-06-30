@@ -46,6 +46,9 @@
   transition: all linear .2s;
   top: 10px;
 }
+#LogoWrapper:hover {
+  transform: rotate(0.25turn);
+}
 #LogoWrapper ul#LogoNames {
   transition: left linear .5s;
   top: 0px;
@@ -72,6 +75,7 @@
   padding-left: 4px;
 }
 #LogoWrapper.Expanded {
+  transform: rotate(0turn);
   height: 200px;
   width: 80px;
 }
@@ -252,7 +256,6 @@ ul.FileList li a {
   transition: all linear .2s;
 }
 ul.FileList li a:hover {
-  background-color: #cccccc;
   border-radius: 10px;
 }
 
@@ -296,7 +299,10 @@ ul.FileList li a:hover {
 }
 
 .FileList {
-  display: Flex;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
 }
 .FileList .FileCard {
   display: flexbox;
@@ -307,11 +313,15 @@ ul.FileList li a:hover {
   border-radius: 10px;
   padding: 10px;
 }
+.FileList .FileCard:hover {
+  background-color: #eee;
+}
 .FileList .FileCard a {
   color: #555;
 }
 .FileList .FileCard img {
   display: flex;
   width: 100%;
-  height: auto;
+  height: 160px;
+  object-fit: cover;
 }
