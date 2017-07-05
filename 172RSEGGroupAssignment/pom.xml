@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.medfileupload</groupId>
-    <artifactId>spring-boot-demo</artifactId>
+    <artifactId>spring-boot-file-upload</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-demo Maven Webapp</name>
+    <name>spring-boot-file-upload Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -52,4 +52,15 @@
             <scope>runtime</scope>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.medfileupload.app.Application</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
