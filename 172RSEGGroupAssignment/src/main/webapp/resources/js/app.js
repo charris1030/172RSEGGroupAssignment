@@ -98,7 +98,7 @@ app.controller("CreateCtrl", function(
 		    { Display: " New Mexico", Value: "NM" },
 		    { Display: " New York", Value: "NY" },
 		    { Display: " North Carolina", Value: "NC" },
-		    { Display: "  North Dakota", Value: "ND" },
+		    { Display: " North Dakota", Value: "ND" },
 		    { Display: " Ohio", Value: "OH" },
 		    { Display: " Oklahoma", Value: "OK" },
 		    { Display: " Oregon", Value: "OR" },
@@ -189,6 +189,8 @@ app.controller("CreateCtrl", function(
 		    console.log("Success");
 		     var filename = $scope.File.name;
 		     $scope.Messages =filename +" uploaded correctly!";
+		     $scope.Model.Timestamp = moment().format("MM/DD/YYYY HH:mm");
+		     $scope.Model.Userstamp = $('.LoginUser').text();
 		     $cookies.putObject(filename, $scope.Model);
 		     $scope.Model = null;
 		    $scope.File = null;   

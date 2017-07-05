@@ -23,10 +23,7 @@
 </head>
 
 <body ng-app="app" ng-controller="Ctrl" ng-cloak>
-<div class="LoginWrapper">
-  <div class="LoginUser">text</div>
-  <div class="Logout"><a href="#" > Logout</a></div>
-</div>
+
 <div class="LoginWrapper">
 
 <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -120,16 +117,18 @@
 
 <div ng-if="CurrScreen=='List'" ng-init="Init()" ng-controller="ListCtrl" class="wrapper">
     <h2>Current Files</h2>
+    <input type="text" class="SearchFiles" placeholder="Search" ng-model="SearchFiles" />
     <p>
 		<ul class="FileList">
-			<li ng-repeat="f in ListofFiles" class="FileCard">
+			<li ng-repeat="f in ListofFiles |filter: SearchFiles" class="FileCard" style="overflow:hidden">
         <img src="{{f.Fullpath}}" alt="{{f.FileName}}"></img>
-        <dl style="line-height:15px; color:black;">
+        <dl style="line-height:18px; color:black;">
         	<dt>{{f.Model.FirstName}} {{f.Model.LastName}}</dt>
         	<dt>{{f.Model.Address}}</dt>
         	<dt>{{f.Model.City}} {{f.Model.State}} {{f.Model.Zip}}</dt>
         </dl>
 				<a href="{{f.Fullpath}}"> {{f.FileName}}</a>
+				<span class="timestamp" style="display: flex;color: #CCC;font-size: 12px;margin-bottom: 0px;padding-bottom: 0px;">{{f.Model.Timestamp}}</span>
 			</li>
 
 		</ul>
@@ -148,6 +147,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
 <script  src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-cookies.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="${contextPath}/resources/js/app.js"></script>
 
 

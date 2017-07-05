@@ -238,9 +238,10 @@ body {
 
 ul.FileList {
   list-style-type: none;
-  text-align: right;
+  text-align: left;
   white-space: nowrap;
-  direction: rtl;
+  overflow: hidden;
+  text-overflow: ellipse;
   padding: 10px;
   margin: 10px;
 }
@@ -261,19 +262,21 @@ ul.FileList li a:hover {
 
 .LoginWrapper {
   font-family: "Open Sans", sans-serif;
+  font-size: 12px;
   padding-bottom: 0px;
   position: absolute;
-  width: 100px;
+  width: 172px;
   background-color: white;
   right: 0px;
   top: 0px;
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 5px;
   min-height: 20px;
-  height: 20px;
+  height: 35px;
   overflow: hidden;
   transition: all linear .3s;
 }
 .LoginWrapper .LoginUser {
+  padding-top: 7px;
   padding-left: 30px;
   color: #333;
 }
@@ -285,6 +288,7 @@ ul.FileList li a:hover {
   argin: 0;
   padding: 1px;
   margin-top: 9px;
+  height: 30px;
   text-align: center;
   font-size: small;
 }
@@ -293,9 +297,9 @@ ul.FileList li a:hover {
   color: white;
 }
 .LoginWrapper:hover {
-  height: 50px;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  height: 59px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 0px;
 }
 
 .FileList {
@@ -324,4 +328,80 @@ ul.FileList li a:hover {
   width: 100%;
   height: 160px;
   object-fit: cover;
+}
+
+.AuthWrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -250px;
+}
+.AuthWrapper div.AuthContent {
+  width: 500px;
+  height: 400px;
+}
+.AuthWrapper div.AuthContent h1 {
+  font-family: "Pacifico", cursive;
+  font-size: 72px;
+  color: #333;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-bottom: 0px;
+}
+.AuthWrapper div.AuthContent .Content {
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+}
+.AuthWrapper div.AuthContent .Content .form-group {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Open Sans", sans-serif;
+}
+.AuthWrapper div.AuthContent .Content .form-group inputwrapper {
+  justify-content: center;
+  flex-direction: column;
+}
+.AuthWrapper div.AuthContent .Content .form-group inputwrapper input {
+  width: 200px;
+}
+.AuthWrapper div.AuthContent .Content .form-group span {
+  width: 100%;
+  margin: 10px;
+}
+.AuthWrapper div.AuthContent .Content .form-group a {
+  text-decoration: none;
+  color: #333;
+}
+.AuthWrapper div.AuthContent .Content .form-group .button {
+  margin-top: 10px;
+  width: 100px;
+  color: white;
+  padding: 5px;
+  border: 2px solid white;
+  font-size: 20px;
+  border-radius: 2px;
+  background-color: transparent;
+}
+.AuthWrapper div.AuthContent .Content .form-group .button:hover {
+  color: #76e6c9;
+  border-color: #76e6c9;
+  cursor: pointer;
+}
+
+.SearchFiles {
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  border-bottom: #CCC solid 2px;
+  color: white;
+  font-size: 16px;
+}
+.SearchFiles:focus {
+  outline: none;
 }
