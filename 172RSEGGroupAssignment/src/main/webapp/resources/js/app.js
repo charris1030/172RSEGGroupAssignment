@@ -164,11 +164,24 @@ app.controller("CreateCtrl", function(
 		        uploader.clearQueue();
 		        return;
 		      }
-		    
+		    	if(fileItem.file.size> 1500000)  
+				 {
+			        $scope.Messages = "File too large. Keep file size below 1.5mb.";
+			        uploader.clearQueue();
+			        $scope.File = null;
+			        return;
+			      }
+				if(fileItem.file.type != 'image/jpeg')  
+				 {
+			        $scope.Messages = "File must be jpeg format";
+			        uploader.clearQueue();
+			        $scope.File = null;
+			        return;
+			      }
 		        console.info("onAfterAddingFile", fileItem);
 			    fileItem.file.name = $scope.Model.FirstName.substring(0,1) + "_" + $scope.Model.LastName + "_" + fileItem.file.name;
 			    $scope.File = fileItem.file;
-			    
+		
 			    console.log(uploader.queue);
 		   
 		  };

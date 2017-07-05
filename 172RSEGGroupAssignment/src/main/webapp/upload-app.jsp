@@ -22,22 +22,22 @@
   
 </head>
 
-<body ng-app="app" ng-controller="Ctrl">
+<body ng-app="app" ng-controller="Ctrl" ng-cloak>
 <div class="LoginWrapper">
   <div class="LoginUser">text</div>
   <div class="Logout"><a href="#" > Logout</a></div>
 </div>
-<div style="float:right; margin-top:5px; margin-right:5px;">
-<center>
+<div class="LoginWrapper">
+
 <c:if test="${pageContext.request.userPrincipal.name != null}">
           <form id="logoutForm" method="POST" action="${contextPath}/logout">
               <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
           </form>
 
-          <p>Logged in as: ${pageContext.request.userPrincipal.name} <br />
-          <a onclick="document.forms['logoutForm'].submit()">Logout</a></p>
-      </c:if>
-</center>
+          <div class="LoginUser">${pageContext.request.userPrincipal.name}</div>
+          <div class="Logout"><a onclick="document.forms['logoutForm'].submit()">Logout</a></div>
+</c:if>
+
 </div>
 <div id="LogoWrapper" ng-class="{'Expanded':Expanded};" ng-click="Expanded=!Expanded">
 

@@ -16,22 +16,20 @@
 
     <title>Create an account</title>
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Pacifico" rel="stylesheet" media="screen"/>
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet" />
+   
 </head>
 
 <body>
 
-<div class="container">
-
+<div class="AuthWrapper">
+<div class="AuthContent">
     <form:form method="POST" modelAttribute="userForm" class="form-signin">
-        <h2 class="form-signin-heading">Create your account</h2>
+        <h1 >Register</h1>
+        <div class="Content">
+        <div class="form-group">
+        <div class="inputwrapper">
         <spring:bind path="username">
             <div class="form-group ${status.error ? 'has-error' : ''}">
                 <form:input type="text" path="username" class="form-control" placeholder="Username"
@@ -55,7 +53,10 @@
             </div>
         </spring:bind>
 
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+        <button class="button" type="submit">Submit</button>
+        </div>
+   </div>
+   </div>
     </form:form>
 
 </div>
