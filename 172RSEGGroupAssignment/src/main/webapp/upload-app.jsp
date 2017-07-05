@@ -19,18 +19,14 @@
 
     <title>Med File Upload App</title>
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+  
 </head>
 
 <body ng-app="app" ng-controller="Ctrl">
-
+<div class="LoginWrapper">
+  <div class="LoginUser">text</div>
+  <div class="Logout"><a href="#" > Logout</a></div>
+</div>
 <div style="float:right; margin-top:5px; margin-right:5px;">
 <center>
 <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -105,7 +101,7 @@
     <input type="text" ng-model="Model.Address" placeholder="Address" />
     <input type="text" ng-model="Model.City" placeholder="City" />
     <input type="text" ng-model="Model.Zip" placeholder="Zip Code" />
-    <select ng-model="Item" ng-options="P.Value as P.Display for P in States"></select>
+    <select ng-model="Model.State" ng-options="P.Value as P.Display for P in States"></select>
 
     <div ng-repeat="n in uploader.queue" ng-if="uploader.queue.length>0">{{n._file.name}}
       <div ng-thumb="{file:n._file, height:150}">
@@ -128,6 +124,11 @@
 		<ul class="FileList">
 			<li ng-repeat="f in ListofFiles" class="FileCard">
         <img src="{{f.Fullpath}}" alt="{{f.FileName}}"></img>
+        <dl style="line-height:15px; color:black;">
+        	<dt>{{f.Model.FirstName}} {{f.Model.LastName}}</dt>
+        	<dt>{{f.Model.Address}}</dt>
+        	<dt>{{f.Model.City}} {{f.Model.State}} {{f.Model.Zip}}</dt>
+        </dl>
 				<a href="{{f.Fullpath}}"> {{f.FileName}}</a>
 			</li>
 
@@ -145,6 +146,7 @@
 
 <script  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+<script  src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-cookies.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
 <script src="${contextPath}/resources/js/app.js"></script>
 

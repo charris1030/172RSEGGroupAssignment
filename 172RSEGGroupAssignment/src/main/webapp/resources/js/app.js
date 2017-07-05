@@ -1,6 +1,6 @@
-var app = angular.module("app", ["angularFileUpload"]);
 
-app.controller("ListCtrl", function($scope,$http) {
+var app = angular.module('app', ['ngCookies', 'angularFileUpload']);
+app.controller("ListCtrl", function($scope,$http,$cookies) {
   
 	
 	function getName(s) {
@@ -12,7 +12,7 @@ app.controller("ListCtrl", function($scope,$http) {
     $scope.GetListOfFiles();
   }
     
-   $scope.GetListOfFiles = function(){
+   $scope.GetListOfFilesOld = function(){
 	   $http({
 		   url: '/uploadedFiles',
 		   method: 'GET'
@@ -31,6 +31,27 @@ app.controller("ListCtrl", function($scope,$http) {
 		   console.log($scope.ListofFiles);
 		});     
     };
+    
+    $scope.GetListOfFiles = function(){
+ 	   $http({
+ 		   url: '/ListFiles/',
+ 		   method: 'GET'
+ 	   }).then(function(data)
+ 		{
+ 		   var curr = data.data; 		        
+ 		   $scope.ListofFiles = [];
+ 		   angular.forEach(curr, function(value, key){
+ 			  
+ 			 var f =  getName(value);
+ 			 var model = $cookies.getObject(f);
+			 var fullpath = value;
+			  $scope.ListofFiles.push({FileName:f, Fullpath: fullpath, Model: model});
+ 		   })
+ 		   
+ 		   $('#Dump').empty();
+ 		   console.log($scope.ListofFiles);
+ 		});     
+     };
 });
 
 app.controller("CreateCtrl", function(
@@ -38,7 +59,8 @@ app.controller("CreateCtrl", function(
 		  $timeout,
 		  $interval,
 		  FileUploader,
-		   $http
+		   $http, 
+		   $cookies
 		) {
 		  $scope.File = null;
 		  $scope.Model = null;
@@ -102,7 +124,7 @@ app.controller("CreateCtrl", function(
 		    
 		  }
 		  var uploader = $scope.uploader =  new FileUploader({
-		   url:"/uploadFiles",
+		   url:"/uploadFile",
 		   method:"POST"
 		  });
 		  
@@ -154,9 +176,14 @@ app.controller("CreateCtrl", function(
 		    console.log("Success");
 		     var filename = $scope.File.name;
 		     $scope.Messages =filename +" uploaded correctly!";
-		    $scope.Model = null;
+		     $cookies.putObject(filename, $scope.Model);
+		     $scope.Model = null;
 		    $scope.File = null;   
 		    uploader.clearQueue();
+		    
+		    
+		    
+		    
 		  };
 		});
 
