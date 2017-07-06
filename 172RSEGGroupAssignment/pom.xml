@@ -51,6 +51,10 @@
             <artifactId>hsqldb</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -58,7 +62,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.medfileupload.app.Application</mainClass>
+                    <mainClass>com.medfileupload.WebApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

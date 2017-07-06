@@ -19,7 +19,7 @@
 
     <title>Med File Upload App</title>
 
-    
+
 
 
 </head>
@@ -64,4 +64,3 @@
 </div>
 </body>
 </html>
-
