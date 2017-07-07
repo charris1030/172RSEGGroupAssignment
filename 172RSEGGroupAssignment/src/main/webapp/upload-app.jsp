@@ -90,14 +90,15 @@
   <p ng-if="Messages!=''">{{Messages}}</p>
 
   <div class="inputwrapper">
-    <input type="text" ng-model="Model.FirstName" placeholder="First Name" />
-    <input type="text" ng-model="Model.LastName" placeholder="Last Name" />
+  <form:form method="POST" modelAttribute="imageForm">
+    <input type="text" ng-model="Model.FirstName" path="first_name" placeholder="First Name" />
+    <input type="text" ng-model="Model.LastName"  path="last_name" placeholder="Last Name" />
     <input type="text" ng-model="Model.DoctorName" placeholder="Doctor Name" />
     <input type="text" ng-model="Model.SSN" placeholder="SSN" />
     <br/>
-    <input type="text" ng-model="Model.Address" placeholder="Address" />
-    <input type="text" ng-model="Model.City" placeholder="City" />
-    <input type="text" ng-model="Model.Zip" placeholder="Zip Code" />
+    <input type="text" ng-model="Model.Address"  path="address" placeholder="Address" />
+    <input type="text" ng-model="Model.City"  path="city" placeholder="City" />
+    <input type="text" ng-model="Model.Zip" path="zip" placeholder="Zip Code" />
     <select ng-model="Model.State" ng-options="P.Value as P.Display for P in States"></select>
 
     <div ng-repeat="n in uploader.queue" ng-if="uploader.queue.length>0">{{n._file.name}}
@@ -107,7 +108,7 @@
       </div>
 
     </div>
-    <div ng-if="File==null" class='Dropbox' nv-file-over="" uploader="uploader" over-class="Accent">Drop File Here</div>
+    <div ng-if="File==null" class='Dropbox' nv-file-over="" uploader="uploader"  path="image" over-class="Accent">Drop File Here</div>
   </div>
 
   <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a>

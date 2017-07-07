@@ -11,13 +11,14 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.io.File;
 
-@SpringBootApplication
 @EnableConfigurationProperties(StorageProperties.class)
+@SpringBootApplication
 public class WebApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

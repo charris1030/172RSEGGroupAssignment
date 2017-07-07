@@ -1,5 +1,6 @@
 package com.medfileupload.controllers;
 
+import com.medfileupload.model.Image;
 import com.medfileupload.model.User;
 import com.medfileupload.service.SecurityService;
 import com.medfileupload.service.StorageFileNotFoundException;
@@ -106,7 +107,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/uplaodedFiles")
+    @GetMapping("/uploadedFiles")
     public String listUploadedFiles(Model model) throws IOException {
 
         model.addAttribute("files", storageService
@@ -141,6 +142,34 @@ public class UserController {
 
         return "redirect:/";
     }
+
+    @RequestMapping(value="/uploadMedFiles", method = RequestMethod.POST)
+    public String handleMedFileUpload(@RequestParam("file") MultipartFile file,
+                                   RedirectAttributes redirectAttributes) {
+
+        storageService.store(file);
+        redirectAttributes.addFlashAttribute("message",
+                "You successfully uploaded " + file.getOriginalFilename() + "!");
+
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/medFileUpload", method = RequestMethod.POST)
+    public String medFileUpload(@ModelAttribute("imageForm") Image imageForm, BindingResult bindingResult, Model model) {
+
+        userService.save(imageForm);
+
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/medFileList", method = RequestMethod.GET)
+    public String getMedFiles(@ModelAttribute("imageForm") Image imageForm, BindingResult bindingResult, Model model) {
+
+        userService.save(imageForm);
+
+        return "redirect:/";
+    }
+
 
 
     @ExceptionHandler(StorageFileNotFoundException.class)

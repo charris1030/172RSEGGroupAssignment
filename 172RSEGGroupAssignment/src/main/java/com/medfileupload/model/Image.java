@@ -1,30 +1,28 @@
-package com.medfileupload.repository;
+package com.medfileupload.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Blob;
+import java.sql.Date;
+import java.util.Set;
 
-import java.util.Date;
+@Entity
+@Table(name = "stored_images")
+public class Image {
+    private Long id;
+    private String username;
+    private Blob image;
+    private String first_name;
+    private String last_name;
+    private String address;
+    private String city;
+    private String state;
+    private String zip;
+    private Date create_ts;
 
-/**
- * Created by Chris on 7/5/2017.
- */
-//@Entity
-@Table(name="User")
-public class User{
+    //private Set<Image> images;
 
-    Long id;
-    String username;
-    String first_name;
-    String last_name;
-    String address;
-    String state;
-    String zip;
-    String password;
-    Date create_ts;
-
-    @Column(name = "ID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }
@@ -33,16 +31,14 @@ public class User{
         this.id = id;
     }
 
-    @Column(name = "PASSWORD")
-    public String getPassword() {
-        return password;
+    public Blob getImage() {
+        return image;
     }
 
-    public void setPassword(String username) {
-        this.password = password;
+    public void setImage(Blob image) {
+        this.image = image;
     }
 
-    @Column(name = "USERNAME")
     public String getUsername() {
         return username;
     }
@@ -51,7 +47,6 @@ public class User{
         this.username = username;
     }
 
-    @Column(name = "FIRST_NAME")
     public String getFirst_name() {
         return first_name;
     }
@@ -60,7 +55,6 @@ public class User{
         this.first_name = first_name;
     }
 
-    @Column(name = "LAST_NAME")
     public String getLast_name() {
         return last_name;
     }
@@ -69,7 +63,6 @@ public class User{
         this.last_name = last_name;
     }
 
-    @Column(name = "ADDRESS")
     public String getAddress() {
         return address;
     }
@@ -78,7 +71,6 @@ public class User{
         this.address = address;
     }
 
-    @Column(name = "STATE")
     public String getState() {
         return state;
     }
@@ -87,7 +79,6 @@ public class User{
         this.state = state;
     }
 
-    @Column(name = "ZIP")
     public String getZip() {
         return zip;
     }
@@ -96,13 +87,20 @@ public class User{
         this.zip = zip;
     }
 
-    @Column(name = "CREATE_TS")
     public Date getCreate_ts() {
         return create_ts;
     }
 
-    public void setCreate_ts (String zip) {
+    public void setCreate_ts (String Date) {
         this.create_ts = create_ts;
     }
+
+    //@ManyToMany(mappedBy = "stored_images")
+    //public Set<Image> getImages() {
+    //    return images;
+    //}
+    //public void setImages(Set<Image> images) {
+    //    this.images = images;
+    //}
 
 }

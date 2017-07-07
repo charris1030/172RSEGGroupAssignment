@@ -16,7 +16,7 @@ public class DatabaseOperations {
     private JdbcTemplate jdbcTemplate;
 
     public void queryUsers() {
-        System.out.println("Query employees");
+        System.out.println("Query users");
         String sql = "SELECT * FROM USERS";
         List<Map<String, Object>> list = jdbcTemplate.queryForList(sql);
         for (Map<String, Object> row : list) {

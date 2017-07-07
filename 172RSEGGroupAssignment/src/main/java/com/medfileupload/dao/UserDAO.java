@@ -3,6 +3,8 @@ package com.medfileupload.dao;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import com.medfileupload.model.Image;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.medfileupload.repository.User;
@@ -19,7 +21,7 @@ public class UserDAO implements IUserDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<User> getAllUsers() {
-        String hql = "SELECT id, create_ts, first_name, last_name, address, state, zip FROM MED_FILE_USER";
+        String hql = "SELECT * FROM User";
         return (List<User>) entityManager.createQuery(hql).getResultList();
     }
     @Override
@@ -28,9 +30,20 @@ public class UserDAO implements IUserDAO {
     }
     @Override
     public boolean userExists(String username) {
-        String hql = "SELECT username FROM MED_FILE_USER WHERE username = ?";
+        String hql = "SELECT username FROM User WHERE username = ?";
         int count = entityManager.createQuery(hql).setParameter(1, username)
                .getResultList().size();
         return count > 0 ? true : false;
+    }
+
+    @Override
+    public void addImage(Image image) {
+        entityManager.persist(image);
+    }
+
+    @Override
+    public List<Image> getAllImages() {
+        String hql = "SELECT * FROM stored_images";
+        return (List<Image>) entityManager.createQuery(hql).getResultList();
     }
 }

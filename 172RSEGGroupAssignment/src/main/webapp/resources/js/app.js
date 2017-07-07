@@ -34,7 +34,7 @@ app.controller("ListCtrl", function($scope,$http,$cookies) {
     
     $scope.GetListOfFiles = function(){
  	   $http({
- 		   url: '/ListFiles/',
+ 		   url: '/ListFiles/', //medFileList
  		   method: 'GET'
  	   }).then(function(data)
  		{
@@ -124,7 +124,7 @@ app.controller("CreateCtrl", function(
 		    
 		  }
 		  var uploader = $scope.uploader =  new FileUploader({
-		   url:"/uploadFile",
+		   url:"/uploadFile", //uploadFile  /medFileUpload
 		   method:"POST"
 		  });
 		  
