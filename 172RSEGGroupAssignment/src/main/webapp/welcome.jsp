@@ -90,6 +90,12 @@
   <p ng-if="Messages!=''">{{Messages}}</p>
 
   <div class="inputwrapper">
+  <form method="POST" enctype="multipart/form-data"
+        action="/s3/upload">
+      File to upload: <input type="file" name="file"><br /> Name: <input
+          type="text" name="name"><br /> <br /> <input type="submit"
+                                                       value="Upload"> Press here to upload the file!
+  </form>
     <form id="imageForm"  method="POST" modelAttribute="imageForm">
      <input type="text" ng-model="Model.FirstName" path="first_name" placeholder="First Name" />
         <input type="text" ng-model="Model.LastName"  path="last_name" placeholder="Last Name" />
