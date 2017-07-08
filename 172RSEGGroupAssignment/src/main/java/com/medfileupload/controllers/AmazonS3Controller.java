@@ -25,7 +25,7 @@ public class AmazonS3Controller {
         this.bucketName = bucketName;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/fileList", method = RequestMethod.GET)
     public List<Resource<S3ObjectSummary>> getBucketResources() {
 
         ObjectListing objectListing = amazonS3Template.getAmazonS3Client()
