@@ -4,8 +4,12 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.amazonaws.services.s3.model.*;
+import com.aws.AmazonS3Template;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.hateoas.Link;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -60,11 +64,6 @@ public class FileUploadController {
                 .collect(Collectors.toList()));
 
         return "uploadForm";
-    }
-
-    @GetMapping("/login")
-    public String login(Model model) throws IOException {
-        return "login";
     }
 
     @GetMapping("/files/{filename:.+}")

@@ -116,11 +116,8 @@
     </ul>
   </p>
 <h2>Members</h2>
-  <p>
-    <ul>
-      <li>Srikant, Chris Harris, and Brad Hardwick</li>
-    </ul>
-  </p>
+  <p>Srikant, Chris Harris, and Brad Hardwick</p>
+    <br />    <br />
 </div>
 
 <div ng-controller="CreateCtrl" class="wrapper" ng-if="CurrScreen=='Create'" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
@@ -129,9 +126,9 @@
   
   <div class="inputwrapper">
 
-    <form method="POST" enctype="multipart/form-data" action="/s3/upload">
+    <form method="POST" enctype="multipart/form-data" action="upload">
       File to upload: <input type="file" name="file" /><br /> Name: <input type="text" name="name" /><br /> <br />
-      <input type="submit" value="Upload" /> Press here to upload the file!
+      <input type="submit" value="Upload" ng-click="Upload(uploader.queue[0])"/> Press here to upload the file!
     </form>
 
 
@@ -156,8 +153,8 @@
   </div>
 
   <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a>
-  
-  
+  <br />
+  <br />  <br />  <br />
 </div>
 
 <div ng-if="CurrScreen=='List'" ng-init="Init()" ng-controller="ListCtrl" class="wrapper">

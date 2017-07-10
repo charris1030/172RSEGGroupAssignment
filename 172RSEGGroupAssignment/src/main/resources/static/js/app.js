@@ -102,7 +102,7 @@ app.controller("CreateCtrl", function(
 		    
 		  }
 		  var uploader = $scope.uploader =  new FileUploader({
-		   url:"",
+		   url:"/s3/upload",
 		   method:"POST"
 		  });
 		  

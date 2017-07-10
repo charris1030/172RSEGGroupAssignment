@@ -40,7 +40,7 @@ public class AmazonS3Controller {
                 .collect(Collectors.toList());
     }
 
-    @RequestMapping(value = "upload", method = RequestMethod.POST)
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
     public
     @ResponseBody
     String handleFileUpload(@RequestParam("name") String name,
