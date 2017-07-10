@@ -1,9 +1,11 @@
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\AmazonS3Controller.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\aws\AmazonProperties.java
 C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\StorageException.java
 C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\FileUploadController.java
-C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\MvcConfig.java
 C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\StorageFileNotFoundException.java
 C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\StorageService.java
-C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\WebSecurityConfig.java
 C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\Application.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\aws\AmazonS3Template.java
 C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\StorageProperties.java
+C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\aws\S3AutoConfiguration.java
 C:\172RSEG_HW2\172RSEGGroupAssignment\src\main\java\com\storage\FileSystemStorageService.java

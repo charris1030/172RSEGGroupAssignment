@@ -82,10 +82,10 @@
   </ul>
 </div>
 
-<div class="LoginWrapper">
+<!--<div class="LoginWrapper">
   <div class="LoginUser">text</div>
   <div class="Logout"><a href="#" > Logout</a></div>
-</div>
+</div>-->
 <div class="wrapper" ng-if="CurrScreen=='Splash'">
   <h2>Image Sharing Over Cloud</h2>
  
@@ -118,9 +118,7 @@
 <h2>Members</h2>
   <p>
     <ul>
-      <li>Srikant</li>
-      <li>Chris Harris</li>
-      <li>Brad Hardwick</li>
+      <li>Srikant, Chris Harris, and Brad Hardwick</li>
     </ul>
   </p>
 </div>
@@ -130,6 +128,13 @@
   <p ng-if="Messages!=''">{{Messages}}</p>
   
   <div class="inputwrapper">
+
+    <form method="POST" enctype="multipart/form-data" action="/s3/upload">
+      File to upload: <input type="file" name="file" /><br /> Name: <input type="text" name="name" /><br /> <br />
+      <input type="submit" value="Upload" /> Press here to upload the file!
+    </form>
+
+
     <input type="text" ng-model="Model.FirstName" placeholder="First Name" />
     <input type="text" ng-model="Model.LastName" placeholder="Last Name" />
     <input type="text" ng-model="Model.DoctorName" placeholder="Doctor Name" />

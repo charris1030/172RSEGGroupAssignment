@@ -62,6 +62,11 @@ public class FileUploadController {
         return "uploadForm";
     }
 
+    @GetMapping("/login")
+    public String login(Model model) throws IOException {
+        return "login";
+    }
+
     @GetMapping("/files/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
