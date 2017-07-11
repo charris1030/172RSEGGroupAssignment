@@ -1,6 +1,5 @@
-var app = angular.module("app", ["angularFileUpload"]);
-
-app.controller("ListCtrl", function($scope,$http) {
+var app = angular.module('app', ['ngCookies', 'angularFileUpload']);
+app.controller("ListCtrl", function($scope,$http,$cookies) {
   
 	
 	function getName(s) {
@@ -12,9 +11,9 @@ app.controller("ListCtrl", function($scope,$http) {
     $scope.GetListOfFiles();
   }
     
-   $scope.GetListOfFiles = function(){
+   $scope.GetListOfFilesOld = function(){
 	   $http({
-		   url: '/',
+		   url: '/uploadedFiles',
 		   method: 'GET'
 	   }).then(function(data)
 		{
@@ -31,6 +30,28 @@ app.controller("ListCtrl", function($scope,$http) {
 		   console.log($scope.ListofFiles);
 		});     
     };
+    
+    $scope.GetListOfFiles = function(){
+ 	   $http({
+ 		   url: '/s3/fileList/',
+ 		   method: 'GET'
+ 	   }).then(function(data){
+ 	   	let curr = data.data;
+ 	   	console.log(curr);
+ 	   	 $scope.ListofFiles = [];
+ 	   	 curr.forEach(function(value){
+  		  
+  			  console.log(value);
+  			 var f =  getName(value.key);
+  			 var model = null;
+ 			 var fullpath = value.links[0].href.replace("s3.","s3.us-east-2.");
+ 			  $scope.ListofFiles.push({FileName:f, Fullpath: fullpath, Model: model});
+  		   });
+  		   
+  		  
+  		   console.log($scope.ListofFiles);
+ 	   });
+     };
 });
 
 app.controller("CreateCtrl", function(
@@ -38,61 +59,62 @@ app.controller("CreateCtrl", function(
 		  $timeout,
 		  $interval,
 		  FileUploader,
-		   $http
+		   $http, 
+		   $cookies
 		) {
 		  $scope.File = null;
 		  $scope.Model = null;
 		  $scope.States = [
-		    { Display: " Alabama", Value: "AL" },
-		    { Display: " Alaska", Value: "AK" },
-		    { Display: " Arizona", Value: "AZ" },
-		    { Display: " Arkansas", Value: "AR" },
-		    { Display: " California", Value: "CA" },
-		    { Display: " Colorado", Value: "CO" },
-		    { Display: " Connecticut", Value: "CT" },
-		    { Display: " Delaware", Value: "DE" },
-		    { Display: " Florida", Value: "FL" },
-		    { Display: " Georgia", Value: "GA" },
-		    { Display: " Hawaii", Value: "HI" },
-		    { Display: " Idaho", Value: "ID" },
-		    { Display: " Illinois", Value: "IL" },
-		    { Display: " Indiana", Value: "IN" },
-		    { Display: " Iowa", Value: "IA" },
-		    { Display: " Kansas", Value: "KS" },
-		    { Display: " Kentucky[D]", Value: "KY" },
-		    { Display: " Louisiana", Value: "LA" },
-		    { Display: " Maine", Value: "ME" },
-		    { Display: " Maryland", Value: "MD" },
-		    { Display: " Massachusetts[E]", Value: "MA" },
-		    { Display: " Michigan", Value: "MI" },
-		    { Display: " Minnesota", Value: "MN" },
-		    { Display: " Mississippi", Value: "MS" },
-		    { Display: " Missouri", Value: "MO" },
-		    { Display: " Montana", Value: "MT" },
-		    { Display: " Nebraska", Value: "NE" },
-		    { Display: " Nevada", Value: "NV" },
-		    { Display: " New Hampshire", Value: "NH" },
-		    { Display: " New Jersey", Value: "NJ" },
-		    { Display: " New Mexico", Value: "NM" },
-		    { Display: " New York", Value: "NY" },
-		    { Display: " North Carolina", Value: "NC" },
-		    { Display: "  North Dakota", Value: "ND" },
-		    { Display: " Ohio", Value: "OH" },
-		    { Display: " Oklahoma", Value: "OK" },
-		    { Display: " Oregon", Value: "OR" },
-		    { Display: " Pennsylvania[F]", Value: "PA" },
-		    { Display: " Rhode Island[G]", Value: "RI" },
-		    { Display: " South Carolina", Value: "SC" },
-		    { Display: " South Dakota", Value: "SD" },
-		    { Display: " Tennessee", Value: "TN" },
-		    { Display: " Texas", Value: "TX" },
-		    { Display: " Utah", Value: "UT" },
-		    { Display: " Vermont", Value: "VT" },
-		    { Display: " Virginia", Value: "VA" },
-		    { Display: " Washington", Value: "WA" },
-		    { Display: " West Virginia", Value: "WV" },
-		    { Display: " Wisconsin", Value: "WI" },
-		    { Display: " Wyoming", Value: "WY" }
+		    { Display: " Alabama", Value: "AL" },
+		    { Display: " Alaska", Value: "AK" },
+		    { Display: " Arizona", Value: "AZ" },
+		    { Display: " Arkansas", Value: "AR" },
+		    { Display: " California", Value: "CA" },
+		    { Display: " Colorado", Value: "CO" },
+		    { Display: " Connecticut", Value: "CT" },
+		    { Display: " Delaware", Value: "DE" },
+		    { Display: " Florida", Value: "FL" },
+		    { Display: " Georgia", Value: "GA" },
+		    { Display: " Hawaii", Value: "HI" },
+		    { Display: " Idaho", Value: "ID" },
+		    { Display: " Illinois", Value: "IL" },
+		    { Display: " Indiana", Value: "IN" },
+		    { Display: " Iowa", Value: "IA" },
+		    { Display: " Kansas", Value: "KS" },
+		    { Display: " Kentucky[D]", Value: "KY" },
+		    { Display: " Louisiana", Value: "LA" },
+		    { Display: " Maine", Value: "ME" },
+		    { Display: " Maryland", Value: "MD" },
+		    { Display: " Massachusetts", Value: "MA" },
+		    { Display: " Michigan", Value: "MI" },
+		    { Display: " Minnesota", Value: "MN" },
+		    { Display: " Mississippi", Value: "MS" },
+		    { Display: " Missouri", Value: "MO" },
+		    { Display: " Montana", Value: "MT" },
+		    { Display: " Nebraska", Value: "NE" },
+		    { Display: " Nevada", Value: "NV" },
+		    { Display: " New Hampshire", Value: "NH" },
+		    { Display: " New Jersey", Value: "NJ" },
+		    { Display: " New Mexico", Value: "NM" },
+		    { Display: " New York", Value: "NY" },
+		    { Display: " North Carolina", Value: "NC" },
+		    { Display: " North Dakota", Value: "ND" },
+		    { Display: " Ohio", Value: "OH" },
+		    { Display: " Oklahoma", Value: "OK" },
+		    { Display: " Oregon", Value: "OR" },
+		    { Display: " Pennsylvania", Value: "PA" },
+		    { Display: " Rhode Island", Value: "RI" },
+		    { Display: " South Carolina", Value: "SC" },
+		    { Display: " South Dakota", Value: "SD" },
+		    { Display: " Tennessee", Value: "TN" },
+		    { Display: " Texas", Value: "TX" },
+		    { Display: " Utah", Value: "UT" },
+		    { Display: " Vermont", Value: "VT" },
+		    { Display: " Virginia", Value: "VA" },
+		    { Display: " Washington", Value: "WA" },
+		    { Display: " West Virginia", Value: "WV" },
+		    { Display: " Wisconsin", Value: "WI" },
+		    { Display: " Wyoming", Value: "WY" }
 		  ];
 
 		    $scope.Upload = function(F)
@@ -102,7 +124,7 @@ app.controller("CreateCtrl", function(
 		    
 		  }
 		  var uploader = $scope.uploader =  new FileUploader({
-		   url:"/s3/upload",
+		   url:'/s3/upload?name=FileName.txt',//"/uploadFile", //uploadFile  /medFileUpload
 		   method:"POST"
 		  });
 		  
@@ -142,11 +164,25 @@ app.controller("CreateCtrl", function(
 		        uploader.clearQueue();
 		        return;
 		      }
-		    
+		    	if(fileItem.file.size> 1500000)  
+				 {
+			        $scope.Messages = "File too large. Keep file size below 1.5mb.";
+			        uploader.clearQueue();
+			        $scope.File = null;
+			        return;
+			      }
+				if(fileItem.file.type != 'image/jpeg')  
+				 {
+			        $scope.Messages = "File must be jpeg format";
+			        uploader.clearQueue();
+			        $scope.File = null;
+			        return;
+			      }
 		        console.info("onAfterAddingFile", fileItem);
 			    fileItem.file.name = $scope.Model.FirstName.substring(0,1) + "_" + $scope.Model.LastName + "_" + fileItem.file.name;
+			    uploader.url = "/s3/upload?name="+ fileItem.file.name;
 			    $scope.File = fileItem.file;
-			    
+		
 			    console.log(uploader.queue);
 		   
 		  };
@@ -154,15 +190,22 @@ app.controller("CreateCtrl", function(
 		    console.log("Success");
 		     var filename = $scope.File.name;
 		     $scope.Messages =filename +" uploaded correctly!";
-		    $scope.Model = null;
+		     $scope.Model.Timestamp = moment().format("MM/DD/YYYY HH:mm");
+		     $scope.Model.Userstamp = $('.LoginUser').text();
+		     $cookies.putObject(filename, $scope.Model);
+		     $scope.Model = null;
 		    $scope.File = null;   
 		    uploader.clearQueue();
+		    
+		    
+		    
+		    
 		  };
 		});
 
 
 		app.controller("Ctrl", function($scope, $timeout, $interval, $http) {
-		  $scope.CurrScreen = "About";
+		  $scope.CurrScreen = "Splash";
 		  
 		  $scope.MenuExpanded = false;
 		  

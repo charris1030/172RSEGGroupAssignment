@@ -88,23 +88,43 @@
 </div>
 <div class="wrapper" ng-if="CurrScreen=='Splash'">
   <h2>Image Sharing Over Cloud</h2>
- 
+ <p>Image Sharing Over Cloud service is a novel idea being proposed by a software engineering group of XXX Healthcare Services, which will extend the capability of the organization to provide their services to a wider community. This is a completely new business proposition to exploit the new framework of services offered by Cloud Service providers such as AWS, AZURE and Google AppEngine. The new service provides a way for the XXX Healthcare Services to bring new revenue using existing resources (healthcare knowledge base in terms of experienced doctors) and also spread their brand name to other geographic locations.
+ </p>
   <a class="button" ng-click="ChangeScreen('Create')">Lets Start</a>
 </div>
 
 <div class="wrapper" ng-if="CurrScreen=='About'">
-  <h2>Project Purpose</h2>
-  <p> The project will provide a service to the patients of the different branches of the XXX Orthopedic Hospital with following benefits:
-    <ul>
-      <li>The service will allow the doctors of the different branches of the XXX Orthopedic Hospital to access the X-ray images of the patients from anywhere at any time</li>
-      <li>This service will eliminate the current practice of sharing the images through physical media such as images, CDs, memory sticks etc</li>
-      <li>This service will enhance ability of the top notch specialists to share their opinions about the X-ray images fo the patients from all the countries where XXX Hospital has its branches</li>
-      <li>This service will also provide a way for the patients who cannot move from their homes to share their X-ray images to the doctors sitting at their homes</li>
-      <li>All the above benefits are provided in a most secured way</li>
-
-    </ul>
-
-  </p>
+  <h2>Background</h2>
+<p>In 2016, a Pew Research study found that, of those polled, 74% found health care to be a “very important” political issue (Bialik, K. (2017)). In fact, anyone who has been to the doctor recently knows this. Hospitals, Clinics and other medical centers are, arguably, at the core of our society. Health is important. In fact, Americans, on average, visit the doctor at least 4 times a year (Niall, M. (2014)). We see this as a basic need. 
+However, recent studies have shown that there exists a large discrepancy in the quality of healthcare by region. Approximately 59 million people live in rural areas of the United States where proper healthcare and tools may be difficult to find (Stanford Medicine (2010)). A study found that rural areas often witness the most difficulty in finding qualified practitioners for specific ailments and physicians were more likely to treat a wide range of ailments (Reschovsky, J.,Staiti, A. (2017)). Further, states like Nevada, Texas and Idaho report that 25% of residents don’t have a regular source for medical care and states such as Montana report that almost half of residents haven't seen a doctor in over a year (Kaplan, K (2016)). Broadening the scope worldwide, countries like Kenya, on average, have just 1 skilled medical professional per 1000 people (World Health Organization. (2014)) partially due to doctors getting trained in african countries and moving to western countries (Mills, E. (2011)). 
+Access to quality healthcare advice is a basic human need. This should not be a modularized endeavor, but a worldwide discussion. What if doctors around the world and around the region could provide the quality care and advice of advanced hospitals in large cities? What if one doctor had the knowledge of an entire network? What if rural towns in Alaska could receive tailored advice instantly? Utilizing the power and cost of the Amazon Web Services (AWS) cloud allows this dream to become a reality. Through the scalability and efficiency of the platform, we believe we can create a platform that allows the free exchange of data between hospitals, states, countries, and doctors. Using the service, Doctors can transfer x-rays to colleagues and request professional advice quickly and securely. We believe that the unique qualities of cloud computing will allow us to provide this service to users who could otherwise not afford a complex system infrastructure or would otherwise be impractical to obtain (remote areas, frequent electrical outages, no space, etc). 
+Further, the scalable pricing module of AWS allows an affordable solution for all parties involved. This is perfect for non-profit projects such as this one. In fact, this project may be eligible to eliminate costs even farther by making use of the Amazon Web Services  Nonprofit Credit program. “Lack of access to the most up-to-date IT infrastructure services should not stand in the way of nonprofits from accomplishing their mission” (Dillinger. J. (2017)) writes a statement on their website. The program offers basic AWS service and $2000 worth of credits towards the use of their service. A great stepping stone toward better, safer, and more affordable health services (Amazon Web Services. (2016)). 
+</p>
+<h2>Context</h2>
+	<p>XXX Healthcare Services is a popular healthcare provider in the East coast region of USA and known for its best quality of service in this area. The company has reached its highest potential in revenues since the service offered is limited by time and number of customers. The company was looking for different avenues or business models to increase their revenue utilizing the existing resources (expert healthcare providers) efficiently, and  at the same time wanted to spread their brand name to other geographical areas in and outside of USA. In his recent all hands meeting the CEO of the XXX Healthcare Services asked the employees to come up with a new idea to expand the business using existing resources and very little investment.
+“Image Sharing Over Cloud” service is a novel idea being proposed by a software engineering group of XXX Healthcare Services, which will extend the capability of the organization to provide their services to a wider community. This is a completely new business proposition to exploit the new framework of services offered by Cloud Service providers such as AWS, AZURE and Google AppEngine. The new service provides a way for the XXX Healthcare Services to bring new revenue using existing resources (healthcare knowledge base in terms of experienced doctors) and also spread their brand name to other geographic locations.
+The team chose AWS over others just because some of the team members  were familiar with the services offered by AWS. Similar application could have been built using either of the other two main Cloud Service providers, AZURE or Google AppEngine.
+Some of the important features of this new service are,
+Provides a secure online interface to the new customer base to upload their X-ray images
+Built on an IT infrastructure (provided by AWS) which is economical to start with and helps making it affordable (even for free in some cases) to the customers from developing countries
+The infrastructure is also flexible enough to expand and shrink the offerings to certain geographical area depending on the market conditions and customer response
+The infrastructure also provides a platform which allows the software team to build and test their application in very short duration
+</p>
+<h2>Assessment</h2>
+<p>The application will be unit tested per normal processes upon completion of development and prior to code check in.  The application will be tested for quality and performance prior to releasing to the business for use. The core functionality of the first phase of the project includes the following features which will be tested.
+The application should be accessible through a web browser. 
+Files should be uploaded and persisted on the server.
+Users should be able to use the interface through a desktop or mobile device web browser. 
+The application should run in a scaled and load-balanced environment hosted within a public cloud. 
+The user should be informed on the screen for a successful upload.
+There should be an overview of the application so the user knows what it is for. 
+Deployments should be minimal downtime. 
+The deployment process must be easy. 
+Files should not be stored on the file system forever. There should be an expiration and be cleared out if the server is restarted. 
+There should be a max size limit for files uploaded.
+Only image files should be able to be uploaded. 
+The user should be provided with a link to their image after uploading. 
+</p>
   <h2>Project Technologies</h2>
   <p>
     <ul>
@@ -118,7 +138,7 @@
 <h2>Members</h2>
   <p>
     <ul>
-      <li>Srikant</li>
+      <li>Srikant Nalatwad</li>
       <li>Chris Harris</li>
       <li>Brad Hardwick</li>
     </ul>
@@ -130,47 +150,47 @@
   <p ng-if="Messages!=''">{{Messages}}</p>
   
   <div class="inputwrapper">
-    <form method="POST" enctype="multipart/form-data" action="/s3/upload">
+    <!-- <form method="POST" enctype="multipart/form-data" action="/s3/upload">
       File to upload: <input type="file" name="file" /><br /> Name: <input type="text" name="name" /><br /> <br />
       <input type="submit" value="Upload" /> Press here to upload the file!
-    </form>
+    </form> -->
 
-    <!--<input type="text" ng-model="Model.FirstName" placeholder="First Name" />
+    <input type="text" ng-model="Model.FirstName" placeholder="First Name" />
     <input type="text" ng-model="Model.LastName" placeholder="Last Name" />
-    <input type="text" ng-model="Model.DoctorName" placeholder="Doctor Name" />
-    <input type="text" ng-model="Model.SSN" placeholder="SSN" />
-    <br/>
+    <!--<input type="text" ng-model="Model.DoctorName" placeholder="Doctor Name" />
+     <input type="text" ng-model="Model.SSN" placeholder="SSN" />
+    <br/> -->
     <input type="text" ng-model="Model.Address" placeholder="Address" />
     <input type="text" ng-model="Model.City" placeholder="City" />
     <input type="text" ng-model="Model.Zip" placeholder="Zip Code" />
     <select ng-model="Item" ng-options="P.Value as P.Display for P in States"></select>
-
     <div ng-repeat="n in uploader.queue" ng-if="uploader.queue.length>0">{{n._file.name}}
       <div ng-thumb="{file:n._file, height:150}">
         
         <canvas width="500" height="150"></canvas>
       </div>
-
     </div>
     <div ng-if="File==null" class='Dropbox' nv-file-over="" uploader="uploader" over-class="Accent">Drop File Here</div>
-
-  <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a>-->
+  <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a>
   </div>
   
 </div>
 
 <div ng-if="CurrScreen=='List'" ng-init="Init()" ng-controller="ListCtrl" class="wrapper">
     <h2>Current Files</h2>
+    <input type="text" class="SearchFiles" placeholder="Search" ng-model="SearchFiles" />
     <p>
 		<ul class="FileList">
-			<li ng-repeat="f in ListofFiles" class="FileCard">
+			<li ng-repeat="f in ListofFiles |filter: SearchFiles" class="FileCard" style="overflow:hidden">
         <img src="{{f.Fullpath}}" alt="{{f.FileName}}"></img>
+        
 				<a href="{{f.Fullpath}}"> {{f.FileName}}</a>
+				<span class="timestamp" style="display: flex;color: #CCC;font-size: 12px;margin-bottom: 0px;padding-bottom: 0px;">{{f.Model.Timestamp}}</span>
 			</li>
-      
+
 		</ul>
     </p>
-</div> 
+</div>
 		<ul style="display:none" class="FileList">
 			<li th:each="file : ${files}">		
 		
@@ -182,7 +202,9 @@
 
 <script  src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+<script  src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-cookies.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.3.4/angular-file-upload.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script th:src="@{/js/app.js}"></script>
 
 </body>
