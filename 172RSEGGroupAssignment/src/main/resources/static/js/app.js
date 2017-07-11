@@ -43,8 +43,9 @@ app.controller("ListCtrl", function($scope,$http,$cookies) {
   		  
   			  console.log(value);
   			 var f =  getName(value.key);
-  			 var model = null;
+  			 var model = {};
  			 var fullpath = value.links[0].href.replace("s3.","s3.us-east-2.");
+ 			 model.timestamp = moment.utc(parseInt(value.lastModified)).zone(5).format('MM/DD/YYYY h:mm A');
  			  $scope.ListofFiles.push({FileName:f, Fullpath: fullpath, Model: model});
   		   });
   		   
