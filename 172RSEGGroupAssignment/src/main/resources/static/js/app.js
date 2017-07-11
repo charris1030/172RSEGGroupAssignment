@@ -135,7 +135,11 @@ app.controller("CreateCtrl", function(
 		      return this.queue.length < 2;
 		    }
 		  });
+			uploader.onBeforeUploadItem = function(item) {
+    		item.url = "/s3/upload?name="+ $scope.File.name;
+    		console.log(item.url);
 
+			};
 		  uploader.onWhenAddingFileFailed = function(
 		    item /*{File|FileLikeObject}*/,
 		    filter,
