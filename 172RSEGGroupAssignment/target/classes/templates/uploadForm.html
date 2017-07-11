@@ -130,7 +130,12 @@
   <p ng-if="Messages!=''">{{Messages}}</p>
   
   <div class="inputwrapper">
-    <input type="text" ng-model="Model.FirstName" placeholder="First Name" />
+    <form method="POST" enctype="multipart/form-data" action="/s3/upload">
+      File to upload: <input type="file" name="file" /><br /> Name: <input type="text" name="name" /><br /> <br />
+      <input type="submit" value="Upload" /> Press here to upload the file!
+    </form>
+
+    <!--<input type="text" ng-model="Model.FirstName" placeholder="First Name" />
     <input type="text" ng-model="Model.LastName" placeholder="Last Name" />
     <input type="text" ng-model="Model.DoctorName" placeholder="Doctor Name" />
     <input type="text" ng-model="Model.SSN" placeholder="SSN" />
@@ -148,10 +153,9 @@
 
     </div>
     <div ng-if="File==null" class='Dropbox' nv-file-over="" uploader="uploader" over-class="Accent">Drop File Here</div>
-  </div>
 
-  <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a>
-  
+  <a class="button" ng-click="Upload(uploader.queue[0])">Lets Upload</a>-->
+  </div>
   
 </div>
 

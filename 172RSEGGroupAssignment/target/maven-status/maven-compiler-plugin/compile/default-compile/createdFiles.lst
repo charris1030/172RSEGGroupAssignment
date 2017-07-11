@@ -1,9 +1,13 @@
+com\aws\AmazonProperties$Aws.class
 com\FileUploadController.class
 com\Application.class
 com\storage\StorageException.class
-com\MvcConfig.class
+com\aws\AmazonS3Template.class
+com\AmazonS3Controller.class
+com\aws\S3AutoConfiguration.class
+com\aws\AmazonProperties.class
 com\storage\StorageFileNotFoundException.class
 com\storage\StorageProperties.class
 com\storage\FileSystemStorageService.class
 com\storage\StorageService.class
-com\WebSecurityConfig.class
+com\aws\AmazonProperties$S3.class
